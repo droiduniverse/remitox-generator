@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne,  } from "typeorm"
+import "reflect-metadata"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Timestamp,  } from "typeorm"
 import { Cliente } from "./Cliente"
 
 @Entity("remitos_creados")
@@ -23,5 +24,10 @@ export class RemitosCreados {
 
     @Column({default: 0})
     total_item: number
+
+    @Column({
+        type: "timestamp",
+        default: new Date().toISOString()})
+    created_at: string
 
 }

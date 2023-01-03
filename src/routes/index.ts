@@ -37,9 +37,10 @@ router.post("/crearRemito", async (req, res, next) => {
   const repoClientes =
     AppDataSource.getRepository<Cliente>("Cliente");
 
-  cliente = await repoClientes.query(`SELECT * FROM Clientes WHERE id = ${items[0].cliente_id} OR cliente_nombre like %${items[0].cliente_nombre}%`);
+  let query = `SELECT * FROM Clientes WHERE id = $1 OR cliente_nombre like $2`
+  cliente = await repoClientes.query(query, [items[0].cliente_id, '%' + items[0].cliente_nombre + '%']);
 
-  if (cliente === []) {
+  if (cliente.length === 0) {
     throw new Error("No existe el cliente seleccionado");
     
   }
