@@ -27,7 +27,7 @@ export class RemitosCreados {
 
     @Column({
         type: "timestamp",
-        default: new Date().toISOString()})
+        default: new Date().toLocaleString()})
     created_at: string
 
 }
