@@ -24,6 +24,7 @@ router.post("/", async (req, res, next) => {
           total_item: el.totalItem,
           cantidad: el.cantidad,
           nro_remito: el.nroRemito,
+          cliente_id: id
         });
       }
 
